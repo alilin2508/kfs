@@ -1,43 +1,39 @@
 NAME    = myos.iso
 RM      = rm      -rf
-CC      = $TARGET-gcc
-AS		= $TARGET-as
+CC      = ~/opt/cross/bin/i386-elf-gcc
+AS	= ~/opt/cross/bin/i386-elf-as
 FLAGS   = -std=gnu99 -ffreestanding -O2 -Wall -Wextra
 
-CSRCS 	:= 	kernel.c
+CSRCS 	:= ./srcs/kernel.c
 
-ASSRCS	:=	boot.s
+ASSRCS	:= ./srcs/boot.s
 
-LDSRCS	:=	linker.ld
+LDSRCS	:= ./srcs/linker.ld
 
-DIR_SRCS 	= ./srcs
-
-DIR_OBJ1	= obj
-DIR_OBJ2	= obj
-
-OBJS1       := $(addprefix ${DIR_OBJ1}/, ${CSRCS:.c=.o})
-OBJS2		:= $(addprefix ${DIR_OBJ2}/, ${ASSRCS:.s=.o})
+OBJS    := ${CSRCS:.c=.o} ${ASSRCS:.s=.o}
 
 all: $(NAME)
 
-$(DIR_OBJ1)/%.o:	$(DIR_SRCS)/%.c
-	@mkdir -p $(dir $@)
-	@$(CC) $(FLAGS) -o $@ -c $<
+%.o: %.c
+	@$(CC) $(FLAGS) -c $< -o $@
 
-$(DIR_OBJ2)/%.o:	$(DIR_SRCS)/%.s
-	@mkdir -p $(dir $@)
-	@$(AS) -o $@
+%.o: %.s
+	@$(AS) $< -o $@
 
-$(NAME): $(OBJS1) $(OBJS2)
-	@$(CC) -T $(LDSRCS) -o myos.bin -ffreestanding -O2 -nostdlib $(OBJS1) $(OBJS2) -lgcc
+$(NAME): $(OBJS)
+	@$(CC) -T $(LDSRCS) -o myos.bin -ffreestanding -O2 -nostdlib $(OBJS) -lgcc
 	@mv myos.bin ./isodir/boot
 	@grub-mkrescue --xorriso=/etc/xorriso-1.5.4/xorriso/xorriso -o $(NAME) isodir
 
 clean:
-	@$(RM) $(DIR_OBJ1) $(DIR_OBJ2)
+	@$(RM) $(OBJS)
 
-fclean:		clean
+fclean:	clean
 	@$(RM) $(NAME)
 	@$(RM) ./isodir/boot/myos.bin
 
 re:	fclean all
+
+launch: 
+	@qemu-system-i386 -cdrom myos.iso
+
