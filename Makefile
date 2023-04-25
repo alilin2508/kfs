@@ -2,7 +2,7 @@ NAME    = myos.iso
 RM      = rm      -rf
 CC      = ~/opt/cross/bin/i386-elf-gcc
 AS	= ~/opt/cross/bin/i386-elf-as
-FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-protector -fno-rtti -nostdlib -nodefaultlibs -O2 -Wall -Wextra
+FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-protector -nostdlib -nodefaultlibs -O2 -Wall -Wextra
 
 CSRCS 	:= ./srcs/kernel.c
 
