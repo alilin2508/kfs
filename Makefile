@@ -26,7 +26,9 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	@$(CC) $(DIR_INC) -T $(LDSRCS) -o myos.bin -ffreestanding -O2 -nostdlib $(OBJS) -lgcc
 	@mv myos.bin ./isodir/boot
-	@grub-mkrescue --xorriso=/etc/xorriso-1.5.4/xorriso/xorriso -o $(NAME) isodir
+	@grub-mkrescue -o $(NAME) isodir
+
+# --xorriso=/etc/xorriso-1.5.4/xorriso/xorriso
 
 clean:
 	@$(RM) $(OBJS)
