@@ -5,7 +5,6 @@ ENV PREFIX="$HOME/opt/cross"
 ENV TARGET=i386-elf
 ENV PATH="$PREFIX/bin:$PATH"
 ENV PATH="$HOME/opt/cross/bin:$PATH"
-ENV USER="kfs"
 
 RUN apt-get update && apt-get install -y \
 	wget \
@@ -44,16 +43,12 @@ RUN cd build-gcc && \
 	make install-gcc && \
 	make install-target-libgcc
 
-COPY . $HOME/kfs
-
 RUN apt-get install -y \
 	grub \
-	qemu \
-	qemu-kvm \
-	libvirt-clients \
-	libvirt-daemon-system \
-	virtinst \
-	bridge-utils \
-	qemu-system \
 	nasm \
 	mtools
+
+WORKDIR $HOME/kfs
+RUN make
+
+CMD ["tail", "-f", "/dev/null"]

@@ -28,8 +28,6 @@ $(NAME): $(OBJS)
 	@mv myos.bin ./isodir/boot
 	@grub-mkrescue -o $(NAME) isodir
 
-# --xorriso=/etc/xorriso-1.5.4/xorriso/xorriso
-
 clean:
 	@$(RM) $(OBJS)
 

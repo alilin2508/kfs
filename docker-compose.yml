@@ -1,0 +1,8 @@
+version: '3.8'
+services:
+  kfs:
+    build:
+      context: .
+    container_name: kfs
+    volumes:
+      - .:/home/kfs
