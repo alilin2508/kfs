@@ -2,7 +2,7 @@ FROM debian:buster
 
 ENV HOME="/home"
 ENV PREFIX="$HOME/opt/cross"
-ENV TARGET=i386-elf
+ENV TARGET=i686-elf
 ENV PATH="$PREFIX/bin:$PATH"
 ENV PATH="$HOME/opt/cross/bin:$PATH"
 
@@ -44,11 +44,11 @@ RUN cd build-gcc && \
 	make install-target-libgcc
 
 RUN apt-get install -y \
-	grub \
 	nasm \
-	mtools
+	mtools \
+	grub-pc-bin \
+	grub-common
 
-WORKDIR $HOME/kfs
-RUN make
+WORKDIR /home/kfs
 
 CMD ["tail", "-f", "/dev/null"]
