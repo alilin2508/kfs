@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <string.h>
 
+/* affichage par buffer vga géré par grub */
 enum vga_color {
 	VGA_COLOR_BLACK = 0,
 	VGA_COLOR_BLUE = 1,
@@ -52,7 +53,7 @@ void kernel_main(void)
 {
 	terminal_initialize();
 
-       	//dans la table ascii 52 = '4'	
+    //dans la table ascii 52 = '4'	
 	terminal_buffer[0] = vga_entry((char)strlen("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), terminal_color);
 	//dans la table ascii ('z')122 - ('H')72 = ('2')50
 	terminal_buffer[1] = vga_entry((char)strncmp("z", "H", 1), terminal_color);
