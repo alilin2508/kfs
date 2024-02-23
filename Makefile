@@ -6,8 +6,24 @@ FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-prot
 
 DIR_INC = -I ./includes/
 
-CSRCS 	:= 	./srcs/helpers.c \
-		./srcs/kernel.c
+CSRCS 	:= 	./srcs/string/strlen.c \
+			./srcs/string/strchr.c \
+			./srcs/string/strncmp.c \
+			./srcs/ctype/islower.c \
+			./srcs/ctype/isupper.c \
+			./srcs/ctype/toupper.c \
+			./srcs/ctype/tolower.c \
+			./srcs/ctype/isdigit.c \
+			./srcs/stdio/vprintf.c \
+			./srcs/stdio/__parse_format.c \
+			./srcs/stdio/sprintf.c \
+			./srcs/stdio/printf.c \
+			./srcs/stdio/puts.c \
+			./srcs/stdio/vsprintf.c \
+			./srcs/stdio/snprintf.c \
+			./srcs/stdio/putchar.c \
+			./srcs/stdio/vsnprintf.c \
+			./srcs/kernel.c
 
 ASSRCS	:= 	./srcs/boot.s
 
