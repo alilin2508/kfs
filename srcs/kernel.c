@@ -18,7 +18,7 @@ enum vga_color {
 	VGA_COLOR_LIGHT_RED = 12,
 	VGA_COLOR_LIGHT_MAGENTA = 13,
 	VGA_COLOR_LIGHT_BROWN = 14,
-	VGA_COLOR_WHITE = 15,	
+	VGA_COLOR_WHITE = 15
 };
  
 static inline uint8_t vga_entry_color(enum vga_color fg, enum vga_color bg) 
@@ -49,7 +49,7 @@ void terminal_initialize(void)
 	}
 }
  
-void kernel_main(void) 
+void kernel_main(void) // GRUB lance le kernel en protected mode (protection de la mémoire par la segmentation) contrairement au real mode (tous les programmes peuvent accéder à tous les espaces mémoires)
 {
 	terminal_initialize();
 

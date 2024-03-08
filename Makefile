@@ -23,6 +23,7 @@ CSRCS 	:= 	./srcs/string/strlen.c \
 			./srcs/stdio/snprintf.c \
 			./srcs/stdio/putchar.c \
 			./srcs/stdio/vsnprintf.c \
+			./srcs/gdt.c \
 			./srcs/kernel.c
 
 ASSRCS	:= 	./srcs/boot.s
