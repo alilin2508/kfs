@@ -25,9 +25,9 @@ struct gdtdescriptor { // protected mode flat/long model descriptor
 
 size_t  strlen(const char* str);
 int     strncmp(const char *s1, const char *s2, size_t n);
-void    *ft_memcpy(void *dst, const void *src, size_t n);
+void    *memcpy(void *dst, const void *src, size_t n);
 void    init_gdt_descriptor(u32 base, u32 limit, u8 access_byte, u8 flags, struct gdtdescriptor *segment_descriptor);
-void    init_gdt();
+// void    init_gdt();
 
 #endif
 

@@ -1,7 +1,5 @@
 #include "helpers.h"
 
-
-
 void init_gdt_descriptor(u32 base, u32 limit, u8 access_byte, u8 flags, struct gdtdescriptor *segment_descriptor) // chaque descripteur fait 8 bytes
 {
     // base: là où le segment commence
@@ -22,7 +20,6 @@ void init_gdt_descriptor(u32 base, u32 limit, u8 access_byte, u8 flags, struct g
 /* Pourquoi Long protected mode: If you do not desire to use Segmentation to separate memory into protected areas, you can get away with using only a few segment descriptors.
 One reason may be that you desire to only use paging to protect memory. As well, this model is strictly enforced in Long Mode, as the BASE AND LIMIT VALUES ARE IGNORED.*/
 
-void init_gdt()
-{
-    
-}
+// void init_gdt()
+// {
+// }
