@@ -52,6 +52,7 @@ void terminal_initialize(void)
 void kernel_main(void) // GRUB lance le kernel en protected mode (protection de la mémoire par la segmentation) contrairement au real mode (tous les programmes peuvent accéder à tous les espaces mémoires)
 {
 	terminal_initialize();
+	// init_gdt();
 
     //dans la table ascii 52 = '4'	
 	terminal_buffer[0] = vga_entry((char)strlen("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"), terminal_color);
