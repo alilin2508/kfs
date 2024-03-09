@@ -6,6 +6,7 @@ FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-prot
 
 DIR_INC = -I ./includes/
 
+<<<<<<< HEAD
 CSRCS 	:= 	./srcs/string/strlen.c \
 			./srcs/string/strchr.c \
 			./srcs/string/strncmp.c \
@@ -25,6 +26,11 @@ CSRCS 	:= 	./srcs/string/strlen.c \
 			./srcs/stdio/vsnprintf.c \
 			./srcs/gdt.c \
 			./srcs/kernel.c
+=======
+CSRCS 	:= 	./srcs/helpers.c \
+		./srcs/kernel.c \
+		./srcs/gdt.c
+>>>>>>> 48043eb (feat(gdt_init): added gdt inititalisation function, not fully working yet)
 
 ASSRCS	:= 	./srcs/boot.s
 
