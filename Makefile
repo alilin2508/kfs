@@ -7,7 +7,8 @@ FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-prot
 DIR_INC = -I ./includes/
 
 CSRCS 	:= 	./srcs/helpers.c \
-		./srcs/kernel.c
+		./srcs/kernel.c \
+		./srcs/gdt.c
 
 ASSRCS	:= 	./srcs/boot.s
 
