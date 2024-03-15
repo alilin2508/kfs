@@ -20,13 +20,14 @@ void init_gdt_descriptor(uint32_t base, uint32_t limit, uint8_t access_byte, uin
 /* Pourquoi Long protected mode: If you do not desire to use Segmentation to separate memory into protected areas, you can get away with using only a few segment descriptors.
 One reason may be that you desire to only use paging to protect memory. As well, this model is strictly enforced in Long Mode, as the BASE AND LIMIT VALUES ARE IGNORED.*/
 
+// Var globale
+struct gdtr kgdtr;
+struct gdtdescriptor kgdt[7];
+
 /* Cette fonction initialise la GDT apres que le kernel soit charge en memoire. Une GDT est deja operationnelle, mais c'est celle qui
  a ete initialisee par le secteur de boot et qui ne correspond pas forcement a celle que l'on souhaite. */
 void init_gdt(void)
-{
-    struct gdtr kgdtr;
-    struct gdtdescriptor kgdt[7];
-    
+{   
     // initialisation des descripteurs de segments
     init_gdt_descriptor(0x0, 0x0, 0x0, 0x0, &kgdt[0]); // null descriptor
     init_gdt_descriptor(0x0, 0xFFFFF, 0x9B, 0x0D, &kgdt[1]); // kernel code
@@ -54,6 +55,7 @@ void init_gdt(void)
             movw %ax, %es    \n \
             movw %ax, %fs    \n \
             movw %ax, %gs    \n \
+            movw %ax, %ss    \n \
             ljmp $0x08, $next    \n \
             next:        \n");
 }
