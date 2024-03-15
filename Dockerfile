@@ -28,7 +28,17 @@ RUN wget https://ftp.gnu.org/gnu/gcc/gcc-13.2.0/gcc-13.2.0.tar.gz
 RUN tar -xvf gcc-13.2.0.tar.gz
 RUN rm gcc-13.2.0.tar.gz
 
+RUN wget https://ftp.gnu.org/gnu/gdb/gdb-14.2.tar.gz
+RUN tar -xvf gdb-14.2.tar.gz
+RUN rm gdb-14.2.tar.gz
+
 WORKDIR $HOME/src
+RUN mkdir gdb
+RUN cd gdb && \
+	/gdb-14.2/configure && \
+	make && \
+	make install
+	
 RUN mkdir build-binutils
 RUN cd build-binutils && \
 	/binutils-2.41/configure --target=$TARGET --prefix="$PREFIX" --with-sysroot --disable-nls --disable-werror && \
