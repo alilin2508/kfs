@@ -1,5 +1,5 @@
 #include <string.h>
-#include "gdt.h"
+#include <gdt.h>
 
 void init_gdt_descriptor(uint32_t base, uint32_t limit, uint8_t access_byte, uint8_t flags, struct gdtdescriptor *segment_descriptor) // chaque descripteur fait 8 bytes
 {

@@ -24,6 +24,8 @@ CSRCS	:= 	./srcs/string/strlen.c \
 			./srcs/stdio/snprintf.c \
 			./srcs/stdio/putchar.c \
 			./srcs/stdio/vsnprintf.c \
+			./srcs/kernel/tty.c \
+			./srcs/kernel/vga.c \
 			./srcs/kernel/gdt.c \
 			./srcs/kernel/main.c
 
