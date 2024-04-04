@@ -3,7 +3,7 @@
 #include <tty.h>
 
 void init_terminal() {
-	tty_init(vga_entry_color(VGA_COLOR_LIGHT_MAGENTA, VGA_COLOR_WHITE));
+	tty_init(vga_entry_color(VGA_COLOR_WHITE, VGA_COLOR_BLACK));
 	VGA_MEMORY[0] = vga_entry('W', vga_entry_color(VGA_COLOR_WHITE, VGA_COLOR_MAGENTA));
 	VGA_MEMORY[1] = vga_entry('e', vga_entry_color(VGA_COLOR_WHITE, VGA_COLOR_BLUE));
 	VGA_MEMORY[2] = vga_entry('l', vga_entry_color(VGA_COLOR_BLACK, VGA_COLOR_LIGHT_CYAN));
