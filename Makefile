@@ -4,11 +4,11 @@ CC      = i686-elf-gcc
 AS	= i686-elf-as
 FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-protector -nostdlib -nodefaultlibs -O2 -Wall -Wextra
 
-DIR_INC = -I ./includes/
+DIR_INC = -I ./includes/kernel -I ./includes/libc
 
-<<<<<<< HEAD
-CSRCS 	:= 	./srcs/string/strlen.c \
+CSRCS	:= 	./srcs/string/strlen.c \
 			./srcs/string/strchr.c \
+			./srcs/string/memcpy.c \
 			./srcs/string/strncmp.c \
 			./srcs/ctype/islower.c \
 			./srcs/ctype/isupper.c \
@@ -24,13 +24,8 @@ CSRCS 	:= 	./srcs/string/strlen.c \
 			./srcs/stdio/snprintf.c \
 			./srcs/stdio/putchar.c \
 			./srcs/stdio/vsnprintf.c \
-			./srcs/gdt.c \
-			./srcs/kernel.c
-=======
-CSRCS 	:= 	./srcs/helpers.c \
-		./srcs/kernel.c \
-		./srcs/gdt.c
->>>>>>> 48043eb (feat(gdt_init): added gdt inititalisation function, not fully working yet)
+			./srcs/kernel/gdt.c \
+			./srcs/kernel/main.c
 
 ASSRCS	:= 	./srcs/boot.s
 

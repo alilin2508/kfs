@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <string.h>
+#include "gdt.h"
 
 /* affichage par buffer vga géré par grub */
 enum vga_color {
@@ -48,7 +49,7 @@ void terminal_initialize(void)
 		}
 	}
 }
- 
+
 void kernel_main(void) // GRUB lance le kernel en protected mode (protection de la mémoire par la segmentation) contrairement au real mode (tous les programmes peuvent accéder à tous les espaces mémoires)
 {
 	terminal_initialize();
