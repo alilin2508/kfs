@@ -40,6 +40,8 @@ inline t_vga_entry vga_entry(unsigned char c, t_vga_entry_color color) {
 	return c | (t_vga_entry) color << 8;
 }
 
-void vga_put(char c, t_vga_entry_color color, size_t x, size_t y);
+inline void vga_put(char c, t_vga_entry_color color, size_t x, size_t y) {
+	VGA_MEMORY[y * VGA_WIDTH + x] = vga_entry(c, color);
+}
 
 #endif
