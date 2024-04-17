@@ -30,6 +30,9 @@ _start:
 	/* setup de stack */
 	mov $stack_top, %esp
 
+	/* initialisation de ebp à NULL */
+	xor %ebp, %ebp
+
 	/* appel du kernel */
 	call kernel_main
 

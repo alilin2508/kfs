@@ -2,7 +2,7 @@ NAME    = myos.iso
 RM      = rm      -rf
 CC      = i686-elf-gcc
 AS	= i686-elf-as
-FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-protector -nostdlib -nodefaultlibs -O2 -Wall -Wextra
+FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-protector -nostdlib -nodefaultlibs -g -Wall -Wextra
 
 DIR_INC = -I ./includes/kernel -I ./includes/libc
 
@@ -13,7 +13,9 @@ CSRCS	:= 	./srcs/ctype/isdigit.c \
 			./srcs/ctype/toupper.c \
 			./srcs/kernel/gdt.c \
 			./srcs/kernel/main.c \
+			./srcs/kernel/stack.c \
 			./srcs/kernel/tty.c \
+			./srcs/kernel/vga.c \
 			./srcs/stdio/__parse_format.c \
 			./srcs/stdio/printf.c \
 			./srcs/stdio/putchar.c \
@@ -44,6 +46,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(CC) $(DIR_INC) -T $(LDSRCS) -o myos.bin -ffreestanding -O2 -nostdlib $(OBJS) -lgcc
+	@nm --numeric-sort myos.bin > myos.map
 	@mv myos.bin ./isodir/boot
 	@grub-mkrescue -o $(NAME) isodir
 
@@ -52,7 +55,7 @@ clean:
 
 fclean:	clean
 	@$(RM) $(NAME)
-	@$(RM) ./isodir/boot/myos.bin
+	@$(RM) ./isodir/boot/myos.bin myos.map
 
 re:	fclean all
 

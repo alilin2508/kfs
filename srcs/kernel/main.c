@@ -1,5 +1,6 @@
-#include <gdt.h>
 #include <stdio.h>
+#include <gdt.h>
+#include <stack.h>
 #include <tty.h>
 
 void init_terminal() {
@@ -16,8 +17,19 @@ void init_terminal() {
 	printf("This is a test message with printf: %d %s\n", 42, "hello");
 }
 
+// fonction test pour afficher la pile depuis une autre fonction
+void call_print_stack() {
+	print_stack();
+}
+
 // GRUB lance le kernel en protected mode (protection de la mémoire par la segmentation) contrairement au real mode (tous les programmes peuvent accéder à tous les espaces mémoires)
 void kernel_main() {
 	init_terminal();
 	init_gdt();
+	// affiche la pile depuis kernel_main (2 appels de fonctions)
+	puts("\nStack trace from kernel_main:");
+	print_stack();
+	// affiche la pile depuis call_print_stack (3 appels de fonctions)
+	puts("\nStack trace from call_print_stack:");
+	call_print_stack();
 }
