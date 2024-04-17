@@ -2,7 +2,7 @@ NAME    = myos.iso
 RM      = rm      -rf
 CC      = i686-elf-gcc
 AS	= i686-elf-as
-FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-protector -nostdlib -nodefaultlibs -g -Wall -Wextra
+FLAGS   = -std=gnu99 -ffreestanding -fno-builtin -fno-exceptions -fno-stack-protector -nostdlib -nodefaultlibs -Wall -Wextra
 
 DIR_INC = -I ./includes/kernel -I ./includes/libc
 
