@@ -46,18 +46,18 @@ all: $(NAME)
 	@$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(DIR_INC) -o myos.bin $(FLAGS) $(OBJS) $(LDFLAGS)
-	mv myos.bin ./isodir/boot
-	grub-mkrescue -o $(NAME) isodir
+	@$(CC) $(DIR_INC) -o myos.bin $(FLAGS) $(OBJS) $(LDFLAGS)
+	@mv myos.bin ./isodir/boot
+	@grub-mkrescue -o $(NAME) isodir
 
 clean:
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean:	clean
-	$(RM) $(NAME) ./isodir/boot/myos.bin
+	@$(RM) $(NAME) ./isodir/boot/myos.bin
 
 re:	fclean all
 
 launch: 
-	qemu-system-i386 -cdrom myos.iso
+	@qemu-system-i386 -cdrom myos.iso
 
