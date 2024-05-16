@@ -2,6 +2,7 @@
 #include <gdt.h>
 #include <stack.h>
 #include <tty.h>
+#include <utils.h>
 
 void init_terminal() {
 	tty_init(vga_entry_color(VGA_COLOR_WHITE, VGA_COLOR_BLACK));
@@ -26,6 +27,9 @@ void call_print_stack() {
 void kernel_main() {
 	init_terminal();
 	init_gdt();
+	// affiche la zone mémoire de la GDT
+	printf("\nHexdump of the GDT at address 0x%x:\n", GDTBASE);
+	hexdump((uint8_t *)GDTBASE, sizeof(struct gdtdescriptor) * GDTDESCNUM);
 	// affiche la pile depuis kernel_main (2 appels de fonctions)
 	puts("\nStack trace from kernel_main:");
 	print_stack();

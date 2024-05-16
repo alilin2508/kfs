@@ -7,6 +7,7 @@ DIR_INC = -I ./includes/kernel -I ./includes/libc
 
 CSRCS	:= 	./srcs/ctype/isdigit.c \
 			./srcs/ctype/islower.c \
+			./srcs/ctype/isprint.c \
 			./srcs/ctype/isupper.c \
 			./srcs/ctype/tolower.c \
 			./srcs/ctype/toupper.c \
@@ -14,6 +15,7 @@ CSRCS	:= 	./srcs/ctype/isdigit.c \
 			./srcs/kernel/main.c \
 			./srcs/kernel/stack.c \
 			./srcs/kernel/tty.c \
+			./srcs/kernel/utils.c \
 			./srcs/kernel/vga.c \
 			./srcs/stdio/__parse_format.c \
 			./srcs/stdio/printf.c \

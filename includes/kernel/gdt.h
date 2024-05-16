@@ -5,7 +5,8 @@
 # include <stddef.h>
 # include <stdint.h>
 
-#define GDTBASE 0x00000800
+# define GDTBASE 0x00000800
+# define GDTDESCNUM 7
 
 struct gdtr { // structure GDTR qui pointe vers la GDT
     uint16_t limite;

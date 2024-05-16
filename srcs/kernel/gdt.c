@@ -22,7 +22,7 @@ One reason may be that you desire to only use paging to protect memory. As well,
 
 // Var globale
 struct gdtr kgdtr;
-struct gdtdescriptor kgdt[7];
+struct gdtdescriptor kgdt[GDTDESCNUM];
 
 /* Cette fonction initialise la GDT apres que le kernel soit charge en memoire. Une GDT est deja operationnelle, mais c'est celle qui
  a ete initialisee par le secteur de boot et qui ne correspond pas forcement a celle que l'on souhaite. */
@@ -38,7 +38,7 @@ void init_gdt() {
 	init_gdt_descriptor(0x0, 0x0, 0xF7, 0x0D, kgdt + 6); // user stack
 
 	// inititialisation de la structure qui pointe vers la gdt
-	kgdtr.limite = sizeof(struct gdtdescriptor) * 7;
+	kgdtr.limite = sizeof(struct gdtdescriptor) * GDTDESCNUM;
 	kgdtr.base = GDTBASE;
 
 	// copie de la gdt à son addresse
