@@ -10,7 +10,7 @@ void print_stack() {
 		printf("  #%d ", frame);
 		t_vga_entry_color old_color = g_term.color;
 		tty_setcolor(vga_entry_color(VGA_COLOR_LIGHT_CYAN, VGA_COLOR_BLACK));
-		printf("0x%08lx\n", sf->eip); // affiche l'adresse de retour de la fonction
+		printf("0x%08x\n", sf->eip); // affiche l'adresse de retour de la fonction
 		tty_setcolor(old_color);
 		sf = sf->ebp;
 	}
