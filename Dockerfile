@@ -1,10 +1,13 @@
-FROM debian:buster
+FROM debian:latest
 
-RUN apt update && apt install -y \
+RUN dpkg --add-architecture i386
+RUN apt upgrade && apt update && apt install -y \
 	build-essential \
-	gcc-multilib \
+	gcc \
 	grub-pc-bin \
 	xorriso
+
+RUN apt install -y gcc-multilib
 
 WORKDIR /home/kfs
 
